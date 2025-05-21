@@ -1,0 +1,157 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <h3 class="mb-0">Prédiction du prix d'une maison</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="predictionForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="rm" class="form-label">Nombre moyen de pièces (RM)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="rm"
+                  formControlName="rm"
+                  [ngClass]="{'is-invalid': predictionForm.get('rm')?.invalid && predictionForm.get('rm')?.touched}"
+                >
+                <div class="invalid-feedback" *ngIf="predictionForm.get('rm')?.errors?.['required']">
+                  Le nombre de pièces est requis
+                </div>
+                <div class="invalid-feedback" *ngIf="predictionForm.get('rm')?.errors?.['min']">
+                  Le nombre de pièces doit être supérieur à 0
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="lstat" class="form-label">Pourcentage de population à statut inférieur (LSTAT)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="lstat"
+                  formControlName="lstat"
+                  [ngClass]="{'is-invalid': predictionForm.get('lstat')?.invalid && predictionForm.get('lstat')?.touched}"
+                >
+                <div class="invalid-feedback" *ngIf="predictionForm.get('lstat')?.errors?.['required']">
+                  Le pourcentage est requis
+                </div>
+                <div class="invalid-feedback" *ngIf="predictionForm.get('lstat')?.errors?.['min'] || predictionForm.get('lstat')?.errors?.['max']">
+                  Le pourcentage doit être entre 0 et 100
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="dis" class="form-label">Distance aux centres d'emploi (DIS)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="dis"
+                  formControlName="dis"
+                  [ngClass]="{'is-invalid': predictionForm.get('dis')?.invalid && predictionForm.get('dis')?.touched}"
+                >
+                <div class="invalid-feedback" *ngIf="predictionForm.get('dis')?.errors?.['required']">
+                  La distance est requise
+                </div>
+                <div class="invalid-feedback" *ngIf="predictionForm.get('dis')?.errors?.['min']">
+                  La distance doit être positive
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="tax" class="form-label">Taux d'impôt foncier pour 10 000$ (TAX)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="tax"
+                  formControlName="tax"
+                  [ngClass]="{'is-invalid': predictionForm.get('tax')?.invalid && predictionForm.get('tax')?.touched}"
+                >
+                <div class="invalid-feedback" *ngIf="predictionForm.get('tax')?.errors?.['required']">
+                  Le taux d'impôt est requis
+                </div>
+                <div class="invalid-feedback" *ngIf="predictionForm.get('tax')?.errors?.['min']">
+                  Le taux d'impôt doit être positif
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="ptratio" class="form-label">Ratio élèves/enseignants (PTRATIO)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="ptratio"
+                  formControlName="ptratio"
+                  [ngClass]="{'is-invalid': predictionForm.get('ptratio')?.invalid && predictionForm.get('ptratio')?.touched}"
+                >
+                <div class="invalid-feedback" *ngIf="predictionForm.get('ptratio')?.errors?.['required']">
+                  Le ratio est requis
+                </div>
+                <div class="invalid-feedback" *ngIf="predictionForm.get('ptratio')?.errors?.['min']">
+                  Le ratio doit être positif
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="age" class="form-label">Pourcentage d'unités construites avant 1940 (AGE)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="age"
+                  formControlName="age"
+                  [ngClass]="{'is-invalid': predictionForm.get('age')?.invalid && predictionForm.get('age')?.touched}"
+                >
+                <div class="invalid-feedback" *ngIf="predictionForm.get('age')?.errors?.['required']">
+                  Le pourcentage est requis
+                </div>
+                <div class="invalid-feedback" *ngIf="predictionForm.get('age')?.errors?.['min'] || predictionForm.get('age')?.errors?.['max']">
+                  Le pourcentage doit être entre 0 et 100
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="indus" class="form-label">Proportion de terrain non-commercial (INDUS)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="indus"
+                  formControlName="indus"
+                  [ngClass]="{'is-invalid': predictionForm.get('indus')?.invalid && predictionForm.get('indus')?.touched}"
+                >
+                <div class="invalid-feedback" *ngIf="predictionForm.get('indus')?.errors?.['required']">
+                  La proportion est requise
+                </div>
+                <div class="invalid-feedback" *ngIf="predictionForm.get('indus')?.errors?.['min'] || predictionForm.get('indus')?.errors?.['max']">
+                  La proportion doit être entre 0 et 100
+                </div>
+              </div>
+            </div>
+
+            <div class="d-grid">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="predictionForm.invalid || loading"
+              >
+                <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                {{ loading ? 'Prédiction en cours...' : 'Prédire le prix' }}
+              </button>
+            </div>
+          </form>
+
+          <div *ngIf="error" class="alert alert-danger mt-3">
+            {{ error }}
+          </div>
+
+          <div *ngIf="predictionResult" class="alert alert-success mt-3">
+            <h4 class="alert-heading">Prix prédit</h4>
+            <p class="mb-0">
+              Le prix estimé de cette maison est de <strong>{{ (predictionResult.predicted_price_dh/10) | number:'1.0-0' }}  €</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

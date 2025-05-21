@@ -1,0 +1,112 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card shadow">
+        <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+          <h3 class="mb-0 fs-4">Détails de la propriété</h3>
+          <div class="house-type">
+            {{ getHouseType(house?.rm || 0) }}
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <div class="detail-image-wrapper">
+            <img [src]="getHouseImage(house?.rm || 0)" class="detail-image" alt="Image de la propriété">
+          </div>
+
+          <div *ngIf="loading" class="text-center py-4">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Chargement...</span>
+            </div>
+          </div>
+
+          <div *ngIf="error" class="alert alert-danger m-3">
+            {{ error }}
+          </div>
+
+          <div *ngIf="!loading && !error && house" class="house-details-content">
+            <div class="row g-3 p-3">
+              <div class="col-md-6">
+                <div class="detail-item">
+                  <i class="bi bi-door-open"></i>
+                  <div class="detail-info">
+                    <h4>Nombre de pièces</h4>
+                    <p>{{ house.rm }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="detail-item">
+                  <i class="bi bi-people"></i>
+                  <div class="detail-info">
+                    <h4>Statut inférieur</h4>
+                    <p>{{ house.lstat }}%</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="detail-item">
+                  <i class="bi bi-geo-alt"></i>
+                  <div class="detail-info">
+                    <h4>Distance aux emplois</h4>
+                    <p>{{ house.dis }} km</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="detail-item">
+                  <i class="bi bi-cash"></i>
+                  <div class="detail-info">
+                    <h4>Taux d'impôt par 10000 €</h4>
+                    <p>{{ house.tax }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="detail-item">
+                  <i class="bi bi-mortarboard"></i>
+                  <div class="detail-info">
+                    <h4>Ratio élèves/enseignants</h4>
+                    <p>{{ house.ptratio }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="detail-item">
+                  <i class="bi bi-clock-history"></i>
+                  <div class="detail-info">
+                    <h4>Âge des unités</h4>
+                    <p>{{ house.age }} ans</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="detail-item">
+                  <i class="bi bi-building"></i>
+                  <div class="detail-info">
+                    <h4>Terrain non-commercial</h4>
+                    <p>{{ house.indus }}%</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="detail-item price-item">
+                  <i class="bi bi-currency-euro"></i>
+                  <div class="detail-info">
+                    <h4>Prix</h4>
+                    <p class="price">{{(house.medv || 0)*1000}} €</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer bg-transparent">
+          <button class="btn btn-primary" routerLink="/houses">
+            <i class="bi bi-arrow-left me-2"></i>
+            Retour au catalogue
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,171 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header bg-success text-white">
+          <h3 class="mb-0">Ajouter une nouvelle maison</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="houseForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="rm" class="form-label">Nombre moyen de pièces (RM)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="rm"
+                  formControlName="rm"
+                  [ngClass]="{'is-invalid': houseForm.get('rm')?.invalid && houseForm.get('rm')?.touched}"
+                >
+                <div class="invalid-feedback" *ngIf="houseForm.get('rm')?.errors?.['required']">
+                  Le nombre de pièces est requis
+                </div>
+                <div class="invalid-feedback" *ngIf="houseForm.get('rm')?.errors?.['min']">
+                  Le nombre de pièces doit être supérieur à 0
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="lstat" class="form-label">Pourcentage de population à statut inférieur (LSTAT)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="lstat"
+                  formControlName="lstat"
+                  [ngClass]="{'is-invalid': houseForm.get('lstat')?.invalid && houseForm.get('lstat')?.touched}"
+                >
+                <div class="invalid-feedback" *ngIf="houseForm.get('lstat')?.errors?.['required']">
+                  Le pourcentage est requis
+                </div>
+                <div class="invalid-feedback" *ngIf="houseForm.get('lstat')?.errors?.['min'] || houseForm.get('lstat')?.errors?.['max']">
+                  Le pourcentage doit être entre 0 et 100
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="dis" class="form-label">Distance aux centres d'emploi (DIS)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="dis"
+                  formControlName="dis"
+                  [ngClass]="{'is-invalid': houseForm.get('dis')?.invalid && houseForm.get('dis')?.touched}"
+                >
+                <div class="invalid-feedback" *ngIf="houseForm.get('dis')?.errors?.['required']">
+                  La distance est requise
+                </div>
+                <div class="invalid-feedback" *ngIf="houseForm.get('dis')?.errors?.['min']">
+                  La distance doit être positive
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="tax" class="form-label">Taux d'impôt foncier pour 10 000$ (TAX)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="tax"
+                  formControlName="tax"
+                  [ngClass]="{'is-invalid': houseForm.get('tax')?.invalid && houseForm.get('tax')?.touched}"
+                >
+                <div class="invalid-feedback" *ngIf="houseForm.get('tax')?.errors?.['required']">
+                  Le taux d'impôt est requis
+                </div>
+                <div class="invalid-feedback" *ngIf="houseForm.get('tax')?.errors?.['min']">
+                  Le taux d'impôt doit être positif
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="ptratio" class="form-label">Ratio élèves/enseignants (PTRATIO)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="ptratio"
+                  formControlName="ptratio"
+                  [ngClass]="{'is-invalid': houseForm.get('ptratio')?.invalid && houseForm.get('ptratio')?.touched}"
+                >
+                <div class="invalid-feedback" *ngIf="houseForm.get('ptratio')?.errors?.['required']">
+                  Le ratio est requis
+                </div>
+                <div class="invalid-feedback" *ngIf="houseForm.get('ptratio')?.errors?.['min']">
+                  Le ratio doit être positif
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="age" class="form-label">Pourcentage d'unités construites avant 1940 (AGE)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="age"
+                  formControlName="age"
+                  [ngClass]="{'is-invalid': houseForm.get('age')?.invalid && houseForm.get('age')?.touched}"
+                >
+                <div class="invalid-feedback" *ngIf="houseForm.get('age')?.errors?.['required']">
+                  Le pourcentage est requis
+                </div>
+                <div class="invalid-feedback" *ngIf="houseForm.get('age')?.errors?.['min'] || houseForm.get('age')?.errors?.['max']">
+                  Le pourcentage doit être entre 0 et 100
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="indus" class="form-label">Proportion de terrain non-commercial (INDUS)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="indus"
+                  formControlName="indus"
+                  [ngClass]="{'is-invalid': houseForm.get('indus')?.invalid && houseForm.get('indus')?.touched}"
+                >
+                <div class="invalid-feedback" *ngIf="houseForm.get('indus')?.errors?.['required']">
+                  La proportion est requise
+                </div>
+                <div class="invalid-feedback" *ngIf="houseForm.get('indus')?.errors?.['min'] || houseForm.get('indus')?.errors?.['max']">
+                  La proportion doit être entre 0 et 100
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="medv" class="form-label">Prix (€)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="medv"
+                  formControlName="medv"
+                  [ngClass]="{'is-invalid': houseForm.get('medv')?.invalid && houseForm.get('medv')?.touched}"
+                >
+                <div class="invalid-feedback" *ngIf="houseForm.get('medv')?.errors?.['required']">
+                  Le prix est requis
+                </div>
+                <div class="invalid-feedback" *ngIf="houseForm.get('medv')?.errors?.['min']">
+                  Le prix doit être supérieur à 0
+                </div>
+              </div>
+            </div>
+
+            <div class="d-grid">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="houseForm.invalid || loading"
+              >
+                <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                {{ loading ? 'Création en cours...' : 'Créer la maison' }}
+              </button>
+            </div>
+          </form>
+
+          <div *ngIf="error" class="alert alert-danger mt-3">
+            {{ error }}
+          </div>
+
+          <div *ngIf="success" class="alert alert-success mt-3">
+            La maison a été créée avec succès ! Redirection...
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
