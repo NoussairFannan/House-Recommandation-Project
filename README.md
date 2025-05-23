@@ -157,27 +157,27 @@ Home
 ### 2.6 Screenshots
 
 #### 2.6.1 Home Page
-![Home Page](src/assets/images/screenshots-house/home.png)
+![Home Page](FrontEnd/house-app/src/assets/images/screenshots-house/home.png)
 *Main application interface*
 
 #### 2.6.2 Property List
-![Property List](src/assets/images/screenshots-house/house-list.png)
+![Property List](FrontEnd/house-app/src/assets/images/screenshots-house/house-list.png)
 *Real estate property catalog*
 
 #### 2.6.3 Property Details
-![Property Details](src/assets/images/screenshots-house/house-detail.png)
+![Property Details](FrontEnd/house-app/src/assets/images/screenshots-house/house-detail.png)
 *Detailed view of a property*
 
 #### 2.6.4 Property Creation
-![Property Creation](src/assets/images/screenshots-house/house-create.png)
+![Property Creation](FrontEnd/house-app/src/assets/images/screenshots-house/house-create.png)
 *Form for creating a new property*
 
 #### 2.6.5 Price Prediction
-![Price Prediction](src/assets/images/screenshots-house/house-predict.png)
+![Price Prediction](FrontEnd/house-app/src/assets/images/screenshots-house/house-predict.png)
 *Property price prediction interface*
 
 #### 2.6.6 Recommendations
-![Recommendations](src/assets/images/screenshots-house/house-recomand.png)
+![Recommendations](FrontEnd/house-app/src/assets/images/screenshots-house/house-recomand.png)
 *Property recommendation system*
 
 ## 3. Backend - Boston Housing API
