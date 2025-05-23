@@ -221,10 +221,11 @@ The machine learning model was developed using scikit-learn's pipeline architect
 
 ```python
 # Build a pipeline: scaling -> polynomial features -> ridge regression
+alp = 10
 pipeline = Pipeline([
     ('scaler', StandardScaler()),
     ('poly', PolynomialFeatures(degree=2, include_bias=False)),
-    ('model', Ridge(alpha=10))
+    ('model', Ridge(alpha=alp))
 ])
 ```
 
